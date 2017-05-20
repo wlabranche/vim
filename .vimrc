@@ -1,15 +1,16 @@
 set nocompatible " Vim not vi. When Vim finds a vimrc, 'nocompatible' is set anyway.
 let mapleader=","
 let maplocalleader="\\"
+" should there be a special thing for plugins?
+execute pathogen#infect()
+let g:jsx_ext_required = 0      " jsx settings
+filetype plugin indent on       " plugins by filetype
 
 " easy .vimrc editing {{{
 nnoremap <leader>vev :vsplit $MYVIMRC<cr>
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " }}}
-execute pathogen#infect()
-let g:jsx_ext_required = 0      " jsx settings
-filetype plugin indent on       " plugins by filetype
 " display colors and such {{{
 syntax on                       " syntax highlighting
 set background=dark             " color settings
@@ -40,7 +41,7 @@ inoremap <leader>' <esc>hea'<esc>bi'<esc>ela
 " }}}
 
 " display/behavior
-" Indicator/General Info {{{
+" indicator/general info {{{
 set ruler                       " ruler on bottom right
 set cursorline                  " cursor location clear
 set number                      " show line numbers
@@ -57,7 +58,7 @@ set hlsearch                    " highlight on search, not sure why this isn't d
 set incsearch                   " incrmental search 
 nohlsearch " this seems dumb... but it works
 " }}}
-" Tabbing {{{
+" tabbing {{{
 set autoindent                  " indent based on previous line
 set expandtab                   " tab as spaces
 set shiftwidth=2                " indents 2 spaces
