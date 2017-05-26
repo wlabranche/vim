@@ -1,10 +1,11 @@
 set nocompatible " Vim not vi. When Vim finds a vimrc, 'nocompatible' is set anyway.
 let mapleader=","
 let maplocalleader="\\"
-" should there be a special thing for plugins?
+" should there be a special thing for plugins? {{{
 execute pathogen#infect()
 let g:jsx_ext_required = 0      " jsx settings
 filetype plugin indent on       " plugins by filetype
+" }}}
 
 " easy .vimrc editing {{{
 nnoremap <leader>vev :vsplit $MYVIMRC<cr>
@@ -37,7 +38,8 @@ nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 vnoremap <leader>' <esc>`<i'<esc>`>la'<esc>
 vnoremap <leader>" <esc>`<i"<esc>`>la"<esc>
-inoremap <leader>' <esc>hea'<esc>bi'<esc>ela
+inoremap <leader>' <esc>viw<esc>a'<esc>bi'<esc>lela
+inoremap <leader>" <esc>viw<esc>a"<esc>bi"<esc>lela
 " }}}
 
 " display/behavior
