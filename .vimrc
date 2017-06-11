@@ -11,21 +11,33 @@ filetype plugin indent on       " plugins by filetype
 nnoremap <leader>vev :vsplit $MYVIMRC<cr>
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+" source current file
+nnoremap <leader>sf :source %<cr>
+" }}}
+" quick help {{{
+nnoremap <leader>h :help<space>
+nnoremap <leader>vh :vertical help<space>
 " }}}
 " display colors and such {{{
 syntax on                       " syntax highlighting
 set background=dark             " color settings
 colorscheme solarized           " sets theme
 " }}}
-
 " commands
 " in next email
 onoremap in@ :<c-u>execute "normal! /\\S\\+@\\S\\+\\.\\S\\+\r:nohlsearch\rvE"<cr>
+inoremap <leader>d <esc>viwxxa
 " basic commands {{{
 inoremap jk <esc>
 vnoremap jk <esc>
 nnoremap <leader><space> :nohlsearch<cr>
 nnoremap zz :q!<cr>
+nnoremap z; :w!<cr>
+" }}}
+" highlighting / syntax {{{
+highlight ExtraWhitespace cterm=NONE ctermbg=white guibg=white
+nnoremap <leader>w :match ExtraWhitespace /\s\+\%#\@<!$/<cr>
+nnoremap <leader>W :match<cr>
 " }}}
 " change case {{{
 inoremap <leader>U <esc>hevbUea
@@ -41,9 +53,8 @@ vnoremap <leader>" <esc>`<i"<esc>`>la"<esc>
 inoremap <leader>' <esc>viw<esc>a'<esc>bi'<esc>lela
 inoremap <leader>" <esc>viw<esc>a"<esc>bi"<esc>lela
 " }}}
-
 " display/behavior
-" indicator/general info {{{
+" indicator / general info {{{
 set ruler                       " ruler on bottom right
 set cursorline                  " cursor location clear
 set number                      " show line numbers
@@ -58,7 +69,7 @@ set path+=**                    " allow recursive search
 set wrapscan                    " wrap on search
 set hlsearch                    " highlight on search, not sure why this isn't default
 set incsearch                   " incrmental search 
-nohlsearch " this seems dumb... but it works
+nohlsearch " because set hlsearch truns on highlighting...
 " }}}
 " tabbing {{{
 set autoindent                  " indent based on previous line
@@ -68,13 +79,12 @@ set tabstop=2                   " not sure what this does
 set softtabstop=2               " tab indents 2 spaces
 set smarttab
 " }}}
-" redraw/misc {{{
+" redraw / misc {{{
 set ttyfast                     " fast redraw
 set lazyredraw                  " only redraw when necessary
 set backspace=eol,start,indent  " make backspace behavior more predictable
 set backupcopy=yes              " for webpack
 " }}}
-
 " FileType specific
 " Vimscript file settings {{{
 augroup filetype_vim
