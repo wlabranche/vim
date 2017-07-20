@@ -31,7 +31,7 @@ inoremap <leader>d <esc>viwxxa
 inoremap jk <esc>
 vnoremap jk <esc>
 nnoremap <leader><space> :nohlsearch<cr>
-nnoremap zz :q!<cr>
+nnoremap zz :q<cr>
 nnoremap z; :w!<cr>
 " }}}
 " highlighting / syntax {{{
@@ -94,12 +94,14 @@ augroup END
 " }}}
 " javascript file settings {{{
 augroup filetype_javascript
-  autocmd FileType javascript nnoremap <buffer> <localleader>c I//<space><esc>
-  autocmd FileType javascript nnoremap <buffer> <localleader>xc ^3x
+  autocmd FileType javascript nnoremap <buffer> <localleader>c :call ToggleComment('//')<cr>
   autocmd FileType javascript inoremap <buffer> rn return
   autocmd FileType javascript inoremap <buffer> fn function
   " experimental, append semicolon on ;enter
   autocmd FileType javascript inoremap ;<cr> <esc>A;<esc>o
 augroup END
 " }}}
+
+" training things
+inoremap <bs> <nop>
 
